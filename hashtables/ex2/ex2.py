@@ -20,4 +20,16 @@ def reconstruct_trip(tickets, length):
     YOUR CODE HERE
     """
 
-    pass
+    count = 0
+    edge_case = "NONE"
+
+    for ticket in tickets:
+        hash_table_insert(hashtable, ticket.source, ticket.destination)
+
+    while None in route:   
+        route[count] = hash_table_retrieve(hashtable, edge_case)
+        edge_case = hash_table_retrieve(hashtable, edge_case)
+        count += 1
+    
+    # removing the last NONE from route
+    return route[:-1]
