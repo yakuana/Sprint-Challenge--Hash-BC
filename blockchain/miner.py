@@ -22,7 +22,7 @@ def proof_of_work(last_proof):
 
     start = timer()
     print("Searching for next proof")
-    proof = 0
+    proof = last_proof + 45678988
     #  TODO: Your code here
 
     while valid_proof(last_proof, proof) is False:
@@ -42,8 +42,11 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
+
     prev_hash = hashlib.sha256(str(last_hash).encode()).hexdigest()
     guess = hashlib.sha256(str(proof).encode()).hexdigest()
+
+    # new hash vs old hash
     return guess[:6] == prev_hash[-6:]
 
 
